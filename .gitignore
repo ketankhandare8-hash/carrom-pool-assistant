@@ -1,0 +1,47 @@
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+node_modules/
+dist/
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env
+.env.local
+
+# Browser cache
+.cache/
+*.cache
+
+# Testing
+coverage/
+.nyc_output/
+
+# Dependencies
+package-lock.json
+yarn.lock
+
+# OS files
+Thumbs.db
+.DS_Store
+*.pem
+
+# Compiled files
+*.class
+*.pyc
+__pycache__/
+
+# Configuration
+.config
+.settings
+
+# Backup files
+*.bak
+*.backup
