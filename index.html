@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrom Pool Assistant - Pro AI Edition</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🎱 Carrom Pool Assistant</h1>
+                <p class="subtitle">Pro AI Edition - Free Features Unlocked</p>
+            </div>
+            <div class="version-badge">v1.0.0 Pro</div>
+        </header>
+
+        <!-- Main Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="aim-assist">Aim Assist</button>
+            <button class="nav-tab" data-tab="super-line">Super Line</button>
+            <button class="nav-tab" data-tab="auto-play">Auto Play</button>
+            <button class="nav-tab" data-tab="queue-manager">Queue Manager</button>
+            <button class="nav-tab" data-tab="analytics">Analytics</button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="main-content">
+            
+            <!-- TAB 1: AIM ASSIST -->
+            <section id="aim-assist" class="tab-content active">
+                <div class="card">
+                    <h2>🎯 AI Aim Assist</h2>
+                    <p class="description">Get real-time aiming suggestions powered by advanced algorithms</p>
+                    
+                    <div class="control-group">
+                        <label for="cue-angle">Cue Angle (degrees):</label>
+                        <div class="slider-container">
+                            <input type="range" id="cue-angle" min="0" max="360" value="0" class="slider">
+                            <span class="angle-value">0°</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="cue-power">Cue Power (%):</label>
+                        <div class="slider-container">
+                            <input type="range" id="cue-power" min="0" max="100" value="50" class="slider">
+                            <span class="power-value">50%</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="target-ball">Target Ball:</label>
+                        <select id="target-ball" class="input-field">
+                            <option value="auto">Auto Detect</option>
+                            <option value="manual">Manual Select</option>
+                        </select>
+                    </div>
+
+                    <div class="canvas-container">
+                        <canvas id="board-canvas" width="400" height="500"></canvas>
+                        <div class="canvas-info">
+                            <p>Board Visualization & Aim Line</p>
+                        </div>
+                    </div>
+
+                    <div class="ai-suggestions">
+                        <h3>💡 AI Recommendations:</h3>
+                        <div id="ai-tips" class="tips-list">
+                            <div class="tip">
+                                <span class="tip-icon">✓</span>
+                                <span>Recommended angle: 45° for optimal pocket shot</span>
+                            </div>
+                            <div class="tip">
+                                <span class="tip-icon">✓</span>
+                                <span>Power: 65% - Medium strength recommended</span>
+                            </div>
+                            <div class="tip">
+                                <span class="tip-icon">✓</span>
+                                <span>Success rate: 87% with current settings</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="calculateAim()">Calculate Best Aim</button>
+                        <button class="btn btn-secondary" onclick="showLineGuidance()">Show Line Guidance</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SUPER LINE -->
+            <section id="super-line" class="tab-content">
+                <div class="card">
+                    <h2>⚡ Super Line Feature</h2>
+                    <p class="description">Advanced visual line system with multiple line types</p>
+                    
+                    <div class="line-options">
+                        <div class="option-group">
+                            <h3>Line Type Selection:</h3>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="line-type" value="basic" checked>
+                                    <span>Basic Line</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="line-type" value="extended">
+                                    <span>Extended Line (Wall Bounce)</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="line-type" value="multi">
+                                    <span>Multi-Ball Line</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="line-type" value="ghost">
+                                    <span>Ghost Ball Line</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="line-opacity">Line Opacity:</label>
+                        <div class="slider-container">
+                            <input type="range" id="line-opacity" min="20" max="100" value="80" class="slider">
+                            <span class="opacity-value">80%</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="line-thickness">Line Thickness:</label>
+                        <div class="slider-container">
+                            <input type="range" id="line-thickness" min="1" max="5" value="3" class="slider" step="0.5">
+                            <span class="thickness-value">3px</span>
+                        </div>
+                    </div>
+
+                    <div class="canvas-container">
+                        <canvas id="line-canvas" width="400" height="500"></canvas>
+                        <div class="canvas-info">
+                            <p>Line Visualization Preview</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-list">
+                        <h3>✨ Super Line Features:</h3>
+                        <ul>
+                            <li>✓ Real-time line visualization</li>
+                            <li>✓ Wall bounce prediction</li>
+                            <li>✓ Multiple ball collision tracking</li>
+                            <li>✓ Ghost ball positioning</li>
+                            <li>✓ Customizable colors & opacity</li>
+                            <li>✓ Speed line effects</li>
+                        </ul>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="enableSuperLine()">Enable Super Line</button>
+                        <button class="btn btn-secondary" onclick="resetLineSettings()">Reset Settings</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: AUTO PLAY -->
+            <section id="auto-play" class="tab-content">
+                <div class="card">
+                    <h2>🤖 Auto Play Mode</h2>
+                    <p class="description">Let the AI play automatically with intelligent decision making</p>
+                    
+                    <div class="status-display">
+                        <div class="status-item">
+                            <span class="status-label">AI Status:</span>
+                            <span class="status-value" id="ai-status">Idle</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Win Rate:</span>
+                            <span class="status-value" id="win-rate">0%</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Shots Played:</span>
+                            <span class="status-value" id="shots-played">0</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="difficulty">AI Difficulty Level:</label>
+                        <select id="difficulty" class="input-field">
+                            <option value="easy">Easy (70% accuracy)</option>
+                            <option value="medium" selected>Medium (85% accuracy)</option>
+                            <option value="hard">Hard (95% accuracy)</option>
+                            <option value="pro">Pro (99% accuracy)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="auto-speed">Shot Speed (ms):</label>
+                        <div class="slider-container">
+                            <input type="range" id="auto-speed" min="1000" max="5000" value="2000" step="500" class="slider">
+                            <span class="speed-value">2s</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="smart-break" checked>
+                            Smart Break Shot
+                        </label>
+                    </div>
+
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="aggressive-play">
+                            Aggressive Play Mode
+                        </label>
+                    </div>
+
+                    <div class="auto-play-stats">
+                        <h3>📊 AI Statistics:</h3>
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <div class="stat-number">87</div>
+                                <div class="stat-label">Accuracy %</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">156</div>
+                                <div class="stat-label">Best Score</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">23</div>
+                                <div class="stat-label">Games Won</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Avg. Shots</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="toggle-auto-play" onclick="toggleAutoPlay()">Start Auto Play</button>
+                        <button class="btn btn-secondary" onclick="pauseAutoPlay()">Pause</button>
+                        <button class="btn btn-danger" onclick="stopAutoPlay()">Stop</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: QUEUE MANAGER -->
+            <section id="queue-manager" class="tab-content">
+                <div class="card">
+                    <h2>📋 Auto Queue Manager</h2>
+                    <p class="description">Manage game queue with automatic matchmaking and scheduling</p>
+                    
+                    <div class="queue-section">
+                        <h3>Current Queue Status</h3>
+                        <div class="queue-stats">
+                            <div class="queue-stat">
+                                <span class="queue-label">Players in Queue:</span>
+                                <span class="queue-number" id="queue-count">0</span>
+                            </div>
+                            <div class="queue-stat">
+                                <span class="queue-label">Waiting Time:</span>
+                                <span class="queue-number" id="wait-time">0s</span>
+                            </div>
+                            <div class="queue-stat">
+                                <span class="queue-label">Active Games:</span>
+                                <span class="queue-number" id="active-games">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="queue-section">
+                        <h3>Queue Settings</h3>
+                        <div class="control-group">
+                            <label for="match-type">Match Type:</label>
+                            <select id="match-type" class="input-field">
+                                <option value="1v1">1v1 Ranked</option>
+                                <option value="2v2">2v2 Team</option>
+                                <option value="tournament">Tournament</option>
+                                <option value="practice">Practice</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="skill-level">Skill Level Matching:</label>
+                            <select id="skill-level" class="input-field">
+                                <option value="strict">Strict (±100 pts)</option>
+                                <option value="balanced" selected>Balanced (±250 pts)</option>
+                                <option value="relaxed">Relaxed (±500 pts)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>
+                                <input type="checkbox" id="auto-queue" checked>
+                                Auto Join Next Game
+                            </label>
+                        </div>
+
+                        <div class="control-group">
+                            <label>
+                                <input type="checkbox" id="notifications" checked>
+                                Enable Notifications
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="queue-section">
+                        <h3>Queue List</h3>
+                        <div id="queue-list" class="queue-list">
+                            <div class="queue-item">
+                                <div class="queue-player">
+                                    <span class="player-rank">🏅 Pro</span>
+                                    <span class="player-name">Player1</span>
+                                </div>
+                                <div class="queue-time">Waiting: 45s</div>
+                            </div>
+                            <div class="queue-item">
+                                <div class="queue-player">
+                                    <span class="player-rank">⭐ Expert</span>
+                                    <span class="player-name">Player2</span>
+                                </div>
+                                <div class="queue-time">Waiting: 32s</div>
+                            </div>
+                            <div class="queue-item">
+                                <div class="queue-player">
+                                    <span class="player-rank">🎖️ Master</span>
+                                    <span class="player-name">Player3</span>
+                                </div>
+                                <div class="queue-time">Waiting: 18s</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="toggle-queue" onclick="toggleQueue()">Join Queue</button>
+                        <button class="btn btn-secondary" onclick="viewMatchHistory()">Match History</button>
+                        <button class="btn btn-secondary" onclick="clearQueue()">Leave Queue</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: ANALYTICS -->
+            <section id="analytics" class="tab-content">
+                <div class="card">
+                    <h2>📈 Game Analytics & Stats</h2>
+                    <p class="description">Detailed performance analytics and game insights</p>
+                    
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>🎯 Overall Stats</h3>
+                            <div class="stat-item">
+                                <span class="stat-name">Total Games:</span>
+                                <span class="stat-val">156</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Win Rate:</span>
+                                <span class="stat-val">68%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Total Points:</span>
+                                <span class="stat-val">12,540</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Rank:</span>
+                                <span class="stat-val">🏅 Pro</span>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3>⚡ Performance Metrics</h3>
+                            <div class="stat-item">
+                                <span class="stat-name">Avg. Accuracy:</span>
+                                <span class="stat-val">82%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Best Streak:</span>
+                                <span class="stat-val">15 wins</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Avg. Shots/Game:</span>
+                                <span class="stat-val">13.2</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Break Avg:</span>
+                                <span class="stat-val">2.8 balls</span>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3>🎱 Shot Analysis</h3>
+                            <div class="stat-item">
+                                <span class="stat-name">Straight Shots:</span>
+                                <span class="stat-val">45%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Bank Shots:</span>
+                                <span class="stat-val">28%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Kick Shots:</span>
+                                <span class="stat-val">18%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-name">Safety Shots:</span>
+                                <span class="stat-val">9%</span>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3>📊 Recent Performance</h3>
+                            <div class="mini-chart">
+                                <div class="chart-bar" style="height: 70%;"></div>
+                                <div class="chart-bar" style="height: 85%;"></div>
+                                <div class="chart-bar" style="height: 65%;"></div>
+                                <div class="chart-bar" style="height: 90%;"></div>
+                                <div class="chart-bar" style="height: 75%;"></div>
+                            </div>
+                            <p class="chart-label">Last 5 Games Win %</p>
+                        </div>
+                    </div>
+
+                    <div class="analytics-section">
+                        <h3>📅 Detailed Match History</h3>
+                        <div class="match-history">
+                            <div class="match-item won">
+                                <span class="match-result">✓ WON</span>
+                                <span class="match-opponent">vs Player_X</span>
+                                <span class="match-score">10-8</span>
+                                <span class="match-time">2 hours ago</span>
+                            </div>
+                            <div class="match-item won">
+                                <span class="match-result">✓ WON</span>
+                                <span class="match-opponent">vs Champion_Y</span>
+                                <span class="match-score">10-7</span>
+                                <span class="match-time">5 hours ago</span>
+                            </div>
+                            <div class="match-item lost">
+                                <span class="match-result">✗ LOST</span>
+                                <span class="match-opponent">vs MasterZ</span>
+                                <span class="match-score">9-10</span>
+                                <span class="match-time">1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="exportStats()">Export Stats</button>
+                        <button class="btn btn-secondary" onclick="refreshAnalytics()">Refresh Data</button>
+                        <button class="btn btn-secondary" onclick="resetStats()">Reset Stats</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>🎱 Carrom Pool Assistant Pro | All Features Free & Unlocked</p>
+                <div class="footer-links">
+                    <a href="#" onclick="showSettings()">Settings</a>
+                    <a href="#" onclick="showHelp()">Help</a>
+                    <a href="#" onclick="showAbout()">About</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="toggleFAB()">
+        <span class="fab-icon">⚙️</span>
+        <div class="fab-menu">
+            <a href="#" onclick="openSettings()">Settings</a>
+            <a href="#" onclick="openHelp()">Guide</a>
+            <a href="#" onclick="openAbout()">About</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
