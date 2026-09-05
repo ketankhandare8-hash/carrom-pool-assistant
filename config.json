@@ -1,0 +1,137 @@
+{
+  "name": "carrom-pool-assistant",
+  "version": "1.0.0",
+  "description": "Advanced Carrom Pool Assistant App - AI-powered aiming, shot prediction, and game analysis",
+  "author": "Ketan Khandare",
+  "license": "MIT",
+  "type": "application/json",
+  "keywords": [
+    "carrom",
+    "pool",
+    "billiards",
+    "AI",
+    "aiming",
+    "game-assistant",
+    "shot-prediction",
+    "analytics"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ketankhandare8-hash/carrom-pool-assistant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ketankhandare8-hash/carrom-pool-assistant/issues"
+  },
+  "homepage": "https://github.com/ketankhandare8-hash/carrom-pool-assistant#readme",
+  "features": {
+    "aimAssist": {
+      "name": "Aim Assist",
+      "description": "Real-time AI aiming suggestions",
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "superLine": {
+      "name": "Super Line",
+      "description": "Advanced visual line system with multiple modes",
+      "enabled": true,
+      "version": "1.0.0",
+      "modes": [
+        "basic",
+        "extended",
+        "multi",
+        "ghost"
+      ]
+    },
+    "autoPlay": {
+      "name": "Auto Play",
+      "description": "Automatic gameplay with AI intelligence",
+      "enabled": true,
+      "version": "1.0.0",
+      "difficulties": [
+        "easy",
+        "medium",
+        "hard",
+        "pro"
+      ]
+    },
+    "queueManager": {
+      "name": "Queue Manager",
+      "description": "Automatic game matching and queue management",
+      "enabled": true,
+      "version": "1.0.0",
+      "matchTypes": [
+        "1v1",
+        "2v2",
+        "tournament",
+        "practice"
+      ]
+    },
+    "analytics": {
+      "name": "Analytics",
+      "description": "Comprehensive performance tracking and statistics",
+      "enabled": true,
+      "version": "1.0.0"
+    }
+  },
+  "aiConfig": {
+    "aimAssist": {
+      "accuracy": 87,
+      "updateInterval": 100,
+      "calculationMethod": "physics-based"
+    },
+    "autoPlay": {
+      "minAccuracy": 70,
+      "maxAccuracy": 99,
+      "defaultDifficulty": "medium",
+      "shotSpeedRange": {
+        "min": 1000,
+        "max": 5000,
+        "default": 2000
+      }
+    },
+    "queueManager": {
+      "matchmakingAlgorithm": "skill-based",
+      "skillLevelVariations": {
+        "strict": 100,
+        "balanced": 250,
+        "relaxed": 500
+      }
+    }
+  },
+  "ui": {
+    "theme": "dark",
+    "primaryColor": "#00d4ff",
+    "accentColor": "#ff6b6b",
+    "successColor": "#00ff88",
+    "responsive": true,
+    "animations": true
+  },
+  "statistics": {
+    "trackingEnabled": true,
+    "exportFormats": [
+      "json"
+    ],
+    "dataRetention": "local",
+    "privacyMode": true
+  },
+  "performance": {
+    "canvasQuality": "high",
+    "animationFPS": 60,
+    "optimizationLevel": "high"
+  },
+  "compatibility": {
+    "browsers": [
+      "Chrome 90+",
+      "Firefox 88+",
+      "Safari 14+",
+      "Edge 90+"
+    ],
+    "devices": [
+      "desktop",
+      "tablet",
+      "mobile"
+    ],
+    "offlineSupport": true,
+    "noExternalDependencies": true
+  }
+}
